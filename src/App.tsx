@@ -29,16 +29,15 @@ function App() {
   return (
     <div className="app">
       <header>
-        <div className="header-top">
-          <h1>🌸 Perfume Collection</h1>
+  <div className="cart-row">
+    <div className="cart">
+      🛒 {cartCount}
+    </div>
+  </div>
 
-          <div className="cart">
-            🛒 <span>{cartCount}</span>
-          </div>
-        </div>
-
-        <p>Discover your perfect scent</p>
-      </header>
+  <h1>🌸 Perfume Collection</h1>
+  <p>Discover your perfect scent</p>
+</header>
 
       <main className="products">
         {products.map((product) => (
