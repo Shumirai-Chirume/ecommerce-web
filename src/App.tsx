@@ -1,66 +1,105 @@
-import { useEffect, useState } from "react";
-import api from "./api";
+import Navbar from "./components/Navbar";
 import "./App.css";
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-}
+import Home from "./pages/Home";
+import { Routes, Route } from "react-router-dom";
+import Shop from "./pages/Shop";
+import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Profile from "./pages/Profile";
+import OrderHistory from "./pages/OrderHistory";
+import Collections from "./pages/Collections";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Footer from "./components/Footer";
+import Checkout from "./pages/Checkout";
+import OrderDetails from "./pages/OrderDetails";
 
 function App() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [cartCount, setCartCount] = useState(0);
-  const [addedProducts, setAddedProducts] = useState<number[]>([]);
-
-  useEffect(() => {
-    api.get("/products")
-      .then((response) => setProducts(response.data))
-      .catch(console.error);
-  }, []);
-
-  const addToCart = (id: number) => {
-    if (!addedProducts.includes(id)) {
-      setAddedProducts([...addedProducts, id]);
-      setCartCount(cartCount + 1);
-    }
-  };
 
   return (
+
     <div className="app">
-      <header>
-  <div className="cart-row">
-    <div className="cart">
-      🛒 {cartCount}
-    </div>
-  </div>
 
-  <h1>🌸 Perfume Collection</h1>
-  <p>Discover your perfect scent</p>
-</header>
+      <Navbar />
 
-      <main className="products">
-        {products.map((product) => (
-          <div className="card" key={product.id}>
-            <div className="bottle">🧴</div>
+      <main>
 
-            <h2>{product.name}</h2>
+      <Routes>
 
-            <p className="price">${product.price}</p>
+        <Route path="/" element={<Home />} />
 
-            <button
-              onClick={() => addToCart(product.id)}
-              disabled={addedProducts.includes(product.id)}
-            >
-              {addedProducts.includes(product.id)
-                ? "Added ✓"
-                : "Add to Cart"}
-            </button>
-          </div>
-        ))}
+        <Route path="/shop" element={<Shop />} />
+
+        <Route 
+  path="/product/:id" 
+  element={<ProductDetails />} 
+/>
+
+<Route
+  path="/cart"
+  element={<Cart />}
+/>
+
+<Route
+  path="/login"
+  element={<Login />}
+/>
+
+<Route
+  path="/register"
+  element={<Register />}
+/>
+
+<Route
+  path="/profile"
+  element={<Profile />}
+/>
+
+<Route
+ path="/orders"
+ element={<OrderHistory />}
+/>
+
+<Route
+  path="/collections"
+  element={<Collections />}
+/>
+
+<Route
+  path="/about"
+  element={<About />}
+/>
+
+
+<Route
+  path="/contact"
+  element={<Contact />}
+/>
+
+<Route
+  path="/checkout"
+  element={<Checkout />}
+/>
+
+<Route
+  path="/orders/:id"
+  element={<OrderDetails />}
+/>
+
+
+      </Routes>
+
       </main>
+
+      <Footer />
+
     </div>
+
   );
+
 }
+
 
 export default App;

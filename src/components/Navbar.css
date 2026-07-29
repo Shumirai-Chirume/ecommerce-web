@@ -1,0 +1,123 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 40px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 20px rgba(142,125,190,0.12);
+
+  margin-bottom: 30px;
+
+}
+
+
+/* Brand */
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+
+  color: #6C4AB6;
+
+  cursor: pointer;
+}
+
+
+
+/* Navigation */
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+
+.nav-links a,
+.nav-actions a {
+
+  text-decoration: none;
+
+  color: #4A435A;
+
+  font-weight: 500;
+
+  transition: 0.3s;
+
+}
+
+
+.nav-links a:hover,
+.nav-actions a:hover {
+
+  color: #6C4AB6;
+
+}
+
+
+
+/* Right side */
+
+.nav-actions {
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+}
+
+
+.search-btn {
+
+  border: none;
+
+  background: #F8F7FF;
+
+  padding: 10px;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+}
+
+
+.cart-btn {
+
+  background: #B8A4FF;
+
+  padding: 10px 15px;
+
+  border-radius: 25px;
+
+  color: white !important;
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:900px){
+
+  .navbar{
+    flex-direction: column;
+    gap:20px;
+  }
+
+
+  .nav-links{
+
+    flex-wrap: wrap;
+
+    justify-content:center;
+
+  }
+
+}
